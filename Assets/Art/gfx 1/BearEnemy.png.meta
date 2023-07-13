@@ -1,0 +1,1139 @@
+fileFormatVersion: 2
+guid: b5c6b0d3d7d6df04792db319dc0dd0cf
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 2
+    compressionQuality: 49
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BearEnemy_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 370
+        width: 33
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76023928659498e41a8ac68c6b5a76d0
+      internalID: 892476094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 370
+        width: 33
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adea6335d83bd1b4eb70c0f575446fa4
+      internalID: 1306405790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_2
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 370
+        width: 33
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da23fbf47fd0151498793379aff01120
+      internalID: 473382169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_3
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 368
+        width: 33
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11964a2695f71cf419ff9a9734a86310
+      internalID: 1159241378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_4
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 367
+        width: 33
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8d76709b2afe184eb851bfbad50e5dd
+      internalID: -66377928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_5
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 367
+        width: 33
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84531c88339494044bab6d723494e7df
+      internalID: -1058236884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_6
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 365
+        width: 33
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecd3f1b792d3ee24db04f4a145876497
+      internalID: -1774342846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_7
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 366
+        width: 33
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a686977ac6cee543aee06ca4086acdb
+      internalID: -312376126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_8
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 363
+        width: 33
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fe5b33a470cae54f9cfd3f111710230
+      internalID: -2116060696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_9
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 363
+        width: 33
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5007701fec508814489d0f0b307df558
+      internalID: -196469864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_11
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 315
+        width: 28
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c6b1f5f338e489428b83cb6cd3f9a67
+      internalID: 995215031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_12
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 315
+        width: 28
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed480514f7a742e4eb50f7323676e89c
+      internalID: -1490129412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_13
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 315
+        width: 28
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36e17afbe6895a24d9a2a55bd3be836f
+      internalID: 994944789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_14
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 315
+        width: 28
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 380df9bd7798a4b4a8f531ed00586d10
+      internalID: -62974254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_15
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 315
+        width: 28
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c500933d0e1186740ba08450d992d1f5
+      internalID: 643229921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_16
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 315
+        width: 28
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d95d33f53127422499ed1584cf609834
+      internalID: 808785859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_17
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 315
+        width: 28
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c020b0545810eb44ac109452e88e0c9
+      internalID: -1766463864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_18
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 315
+        width: 28
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 074d23dbec9c28646bcac6345606846e
+      internalID: -255824395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_19
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 315
+        width: 28
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9429b30d55364548ab08f42b8d4a5fc
+      internalID: -1277894300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_22
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 256
+        width: 33
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0b843f444b2e874b9f97a3a82e84a85
+      internalID: 548153401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_23
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 257
+        width: 33
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13b7c30c785f61c49ae3d7bfb0c9145a
+      internalID: -1448134060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_24
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 258
+        width: 33
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cf4c392882c1aa478e4cb217b5f1613
+      internalID: 2008310356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_25
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 256
+        width: 32
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9627ccf503407004d8802a1514a42a20
+      internalID: -1888904195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_26
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 257
+        width: 33
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d4aaf1a4508d3343a356c2e0ebae370
+      internalID: -1845899295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_27
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 257
+        width: 33
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d527bbb30877b44a85db144d55631fc
+      internalID: 874510785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_28
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 257
+        width: 33
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6de9cf55170ac3d46bceae4a5123d6ea
+      internalID: -602023868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_29
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 260
+        width: 33
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68b0cb2f5d3c3e847976e17d9bf9cb75
+      internalID: -441913583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_30
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 261
+        width: 33
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5648e6d61d24cc409312796045fc9b2
+      internalID: 717558173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_31
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 261
+        width: 33
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce911c1044f62674a9deaffe1daf5ef9
+      internalID: -741027573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_33
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 192
+        width: 39
+        height: 41
+      alignment: 9
+      pivot: {x: 0.579667, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fb8929831515c94a8a8e37c42211d8d
+      internalID: 1174306535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_34
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 192
+        width: 38
+        height: 41
+      alignment: 9
+      pivot: {x: 0.57, y: 0.49999964}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29387d31dda3ebf4daaeb11bc66ee3ab
+      internalID: -1364496318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_35
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 192
+        width: 38
+        height: 41
+      alignment: 9
+      pivot: {x: 0.57, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 742e1ba3b7b48944380831af9103170a
+      internalID: 590219422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_36
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 185
+        width: 43
+        height: 50
+      alignment: 9
+      pivot: {x: 0.6291099, y: 0.55}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c711fe31f1624104abdc9116a28ca35c
+      internalID: -2402813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_40
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 27
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b50887d2e16916840a8832024c047752
+      internalID: -579973875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_41
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 128
+        width: 51
+        height: 39
+      alignment: 9
+      pivot: {x: 0.27, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d00d2911615f7be4aa76a89f0ce5d01a
+      internalID: -1329187579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_54
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 64
+        width: 33
+        height: 53
+      alignment: 9
+      pivot: {x: 0.50000095, y: 0.38728246}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 516a18b3b6a7f6b4bae2a5e104cbdf66
+      internalID: -742627451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_56
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 64
+        width: 39
+        height: 41
+      alignment: 9
+      pivot: {x: 0.42537355, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 832b458bf1e515a4a869845d904e1bc7
+      internalID: 695439956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_58
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 38
+        height: 41
+      alignment: 9
+      pivot: {x: 0.4355033, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 319f0874c5d3bf44898219a03a5a8d34
+      internalID: 171240424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_20
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 315
+        width: 28
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a3b8845310a1b24aafd009267450032
+      internalID: 1871339527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_37
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 185
+        width: 32
+        height: 50
+      alignment: 9
+      pivot: {x: 0.49755383, y: 0.5474338}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ca614ed60ad28049ad1fffd0fe5244b
+      internalID: 1545651068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_38
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 128
+        width: 28
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b9ad5f3e98cd8c4d88a490bc733a764
+      internalID: 298312400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_39
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 128
+        width: 28
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20a4074b8f1f2af459a45f229335df62
+      internalID: -1349759424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_45
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 128
+        width: 51
+        height: 39
+      alignment: 9
+      pivot: {x: 0.27, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8573951cfdde9fb40963b93e780b58c8
+      internalID: -779556225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_52
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 64
+        width: 43
+        height: 53
+      alignment: 9
+      pivot: {x: 0.38244346, y: 0.38150212}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17ca1ca72fe21f9499df53b5e9725dd3
+      internalID: -805380653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BearEnemy_57
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 64
+        width: 38
+        height: 41
+      alignment: 9
+      pivot: {x: 0.4355031, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf399d45823767a4c9ccdeb4ffe337dd
+      internalID: -1536771618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      BearEnemy_0: 892476094
+      BearEnemy_1: 1306405790
+      BearEnemy_10: 661980041
+      BearEnemy_11: 995215031
+      BearEnemy_12: -1490129412
+      BearEnemy_13: 994944789
+      BearEnemy_14: -62974254
+      BearEnemy_15: 643229921
+      BearEnemy_16: 808785859
+      BearEnemy_17: -1766463864
+      BearEnemy_18: -255824395
+      BearEnemy_19: -1277894300
+      BearEnemy_2: 473382169
+      BearEnemy_20: 1871339527
+      BearEnemy_21: -436644518
+      BearEnemy_22: 548153401
+      BearEnemy_23: -1448134060
+      BearEnemy_24: 2008310356
+      BearEnemy_25: -1888904195
+      BearEnemy_26: -1845899295
+      BearEnemy_27: 874510785
+      BearEnemy_28: -602023868
+      BearEnemy_29: -441913583
+      BearEnemy_3: 1159241378
+      BearEnemy_30: 717558173
+      BearEnemy_31: -741027573
+      BearEnemy_32: 716940206
+      BearEnemy_33: 1174306535
+      BearEnemy_34: -1364496318
+      BearEnemy_35: 590219422
+      BearEnemy_36: -2402813
+      BearEnemy_37: 1545651068
+      BearEnemy_38: 298312400
+      BearEnemy_39: -1349759424
+      BearEnemy_4: -66377928
+      BearEnemy_40: -579973875
+      BearEnemy_41: -1329187579
+      BearEnemy_42: -381567511
+      BearEnemy_43: -1515275545
+      BearEnemy_44: 266688014
+      BearEnemy_45: -779556225
+      BearEnemy_46: 1918471705
+      BearEnemy_47: 1223886639
+      BearEnemy_48: 443562031
+      BearEnemy_49: -792487511
+      BearEnemy_5: -1058236884
+      BearEnemy_50: 324435575
+      BearEnemy_51: 1407419032
+      BearEnemy_52: -805380653
+      BearEnemy_53: 1187409222
+      BearEnemy_54: -742627451
+      BearEnemy_55: -27846193
+      BearEnemy_56: 695439956
+      BearEnemy_57: -1536771618
+      BearEnemy_58: 171240424
+      BearEnemy_6: -1774342846
+      BearEnemy_7: -312376126
+      BearEnemy_8: -2116060696
+      BearEnemy_9: -196469864
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

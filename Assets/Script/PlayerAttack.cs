@@ -16,9 +16,8 @@ public class PlayerAttack : MonoBehaviour
         
     }
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.CompareTag("Breakable")){
-            Debug.Log("Player in range");
-            other.GetComponent<Pots>().Smash();
-        }
+       
     }
+
+    
 }

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Breakable
+  - Enemy
+  - Hitbox
   layers:
   - Default
   - TransparentFX
@@ -12,8 +14,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Enemies
   - 
   - 
   - 
@@ -42,9 +44,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: CollisionTile
+    uniqueID: 3852278573
+    locked: 0
   - name: Player
     uniqueID: 4187676801
     locked: 0
-  - name: CollisionTile
-    uniqueID: 3852278573
+  - name: Enemies
+    uniqueID: 2294196199
     locked: 0

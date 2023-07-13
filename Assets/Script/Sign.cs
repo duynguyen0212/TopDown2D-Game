@@ -23,15 +23,15 @@ public class Sign : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.CompareTag("Player")){
-            Debug.Log("Player in range");
+        if(other.CompareTag("Player") && Input.GetButtonDown("Attack")){
+          
             StartCoroutine(dialogTrigger());
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
         if(other.CompareTag("Player")){
-            Debug.Log("Player out of range");
+            
             dialogBox.SetActive(false);
         }
     }

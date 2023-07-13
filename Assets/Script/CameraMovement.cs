@@ -14,13 +14,8 @@ public class CameraMovement : MonoBehaviour
     void LateUpdate() {
         Vector3 desiredPosittion = target.position + offset; 
         
-
-        desiredPosittion.x = Mathf.Clamp(desiredPosittion.x,
-                                        minPos.x,
-                                        maxPos.x);
-        desiredPosittion.y = Mathf.Clamp(desiredPosittion.y,
-                                        minPos.y,
-                                        maxPos.y);
+        desiredPosittion.x = Mathf.Clamp(desiredPosittion.x, minPos.x, maxPos.x);
+        desiredPosittion.y = Mathf.Clamp(desiredPosittion.y, minPos.y, maxPos.y);
 
         transform.position = desiredPosittion;  
     }
