@@ -30,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     public Player_Info info;
     public bool isRegen = false;
     private float regenCooldown = 5f;
+    [SerializeField]
+    private GameObject healingParticle;
 
    
     // Start is called before the first frame update
@@ -42,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
         info.SetMaxMana(maxMana);
         info.SetMaxEXP(maxEXP);
         info.SetEXP(currentEXP);
+        healingParticle.SetActive(false);
         currentState = PlayerState.walk;
         animator = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -151,12 +154,15 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator HealingCo(){
         
         isRegen=true;
+        healingParticle.SetActive(true);
         while(currentHealth<maxHealth && isRegen){
             currentHealth ++;
             info.SetHP(currentHealth);
             yield return new WaitForSeconds(1f);
         }
+        healingParticle.SetActive(false);
         isRegen=false;
+
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
@@ -179,6 +185,5 @@ public class PlayerMovement : MonoBehaviour
          if(other.CompareTag("Breakable")){
             other.GetComponent<Pots>().Smash();
         }
-    
     }
 }
