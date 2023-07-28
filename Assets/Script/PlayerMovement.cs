@@ -44,7 +44,6 @@ public class PlayerMovement : MonoBehaviour
         info.SetMaxMana(maxMana);
         info.SetMaxEXP(maxEXP);
         info.SetEXP(currentEXP);
-        healingParticle.SetActive(false);
         currentState = PlayerState.walk;
         animator = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
