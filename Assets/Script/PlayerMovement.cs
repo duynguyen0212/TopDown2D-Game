@@ -32,11 +32,13 @@ public class PlayerMovement : MonoBehaviour
     private float regenCooldown = 5f;
     [SerializeField]
     private GameObject healingParticle;
+    public int combo;
 
    
     // Start is called before the first frame update
     void Start()
     {
+        
         currentHealth = maxHealth;
         currentMana = maxMana;
         currentEXP = 0;
@@ -50,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
         Enemy enemy = GetComponent<Enemy>();
         animator.SetFloat("moveX",0);
         animator.SetFloat("moveY", -1);
+        
     }
 
     // Update is called once per frame
@@ -63,8 +66,6 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(AttackCo());
         }
         
-        
-
         if(change.x < 0 && facingRight ||change.x > 0 && !facingRight){
             facingRight = !facingRight;
             Vector3 localScale = transform.localScale;
@@ -74,11 +75,20 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
+    public void Start_Combo(){
+        if(combo<3){
+            combo++;
+        }
+    }
+
+    public void Finish_Ani(){
+        currentState = PlayerState.walk;
+        combo=0;
+    }
+
     private IEnumerator AttackCo(){
-        animator.SetBool("attacking",true);
+        animator.SetTrigger(""+combo);
         currentState = PlayerState.attack; //meaning not in walking state/ can't move
-        yield return null;
-        animator.SetBool("attacking",false);
         yield return new WaitForSeconds(.3f);
         currentState = PlayerState.walk; 
         
