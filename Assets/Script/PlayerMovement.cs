@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
         currentState = PlayerState.walk;
         animator = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
-        Enemy enemy = GetComponent<Enemy>();
+        //Enemy enemy = GetComponent<Enemy>();
         animator.SetFloat("moveX",0);
         animator.SetFloat("moveY", -1);
         
@@ -63,7 +63,9 @@ public class PlayerMovement : MonoBehaviour
         change.y = Input.GetAxisRaw("Vertical");
        
         if(Input.GetButtonDown("Attack") && currentState != PlayerState.attack){
+            animator.SetTrigger(""+combo);
             StartCoroutine(AttackCo());
+            
         }
         
         if(change.x < 0 && facingRight ||change.x > 0 && !facingRight){
@@ -79,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
         if(combo<3){
             combo++;
         }
+        
     }
 
     public void Finish_Ani(){
@@ -87,7 +90,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private IEnumerator AttackCo(){
-        animator.SetTrigger(""+combo);
         currentState = PlayerState.attack; //meaning not in walking state/ can't move
         yield return new WaitForSeconds(.3f);
         currentState = PlayerState.walk; 
