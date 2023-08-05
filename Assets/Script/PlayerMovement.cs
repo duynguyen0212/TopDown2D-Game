@@ -30,9 +30,14 @@ public class PlayerMovement : MonoBehaviour
     public Player_Info info;
     public bool isRegen = false;
     private float regenCooldown = 5f;
-    [SerializeField]
-    private GameObject healingParticle;
+    [SerializeField] private GameObject healingParticle;
     public int combo;
+    // [SerializeField] private Timer comboResetTimer;
+    // [SerializeField] private float comboCooldown;
+    private float nextAttackTime;
+    private bool isCoolingDown => Time.time < nextAttackTime;
+    private float comboResetCooldown;
+    private void StartCoolDown(float cooldownTime) => nextAttackTime = Time.time + cooldownTime;
 
    
     // Start is called before the first frame update
@@ -49,10 +54,9 @@ public class PlayerMovement : MonoBehaviour
         currentState = PlayerState.walk;
         animator = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
-        //Enemy enemy = GetComponent<Enemy>();
         animator.SetFloat("moveX",0);
         animator.SetFloat("moveY", -1);
-        
+        //comboResetTimer = new Timer();
     }
 
     // Update is called once per frame
@@ -61,12 +65,14 @@ public class PlayerMovement : MonoBehaviour
         change = Vector3.zero;
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
-       
+
         if(Input.GetButtonDown("Attack") && currentState != PlayerState.attack){
-            animator.SetTrigger(""+combo);
             StartCoroutine(AttackCo());
-            
+            comboResetCooldown = 1.5f;
+            animator.SetTrigger("combo"+combo);
+            combo++;
         }
+        ResetCombo();
         
         if(change.x < 0 && facingRight ||change.x > 0 && !facingRight){
             facingRight = !facingRight;
@@ -77,21 +83,24 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    public void Start_Combo(){
-        if(combo<3){
-            combo++;
+    private void ResetCombo(){
+        if(comboResetCooldown>0){
+            comboResetCooldown -= Time.deltaTime;
         }
-        
+        if(comboResetCooldown<=0|| combo>2){
+            combo = 0;
+        }
     }
 
     public void Finish_Ani(){
         currentState = PlayerState.walk;
         combo=0;
+    
     }
 
     private IEnumerator AttackCo(){
         currentState = PlayerState.attack; //meaning not in walking state/ can't move
-        yield return new WaitForSeconds(.3f);
+        yield return new WaitForSeconds(.23f);
         currentState = PlayerState.walk; 
         
     }
