@@ -67,38 +67,8 @@ public class PlayerMovement : MonoBehaviour
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
 
-        // if(Input.GetButtonDown("Attack") && currentState != PlayerState.attack){
-        //     StartCoroutine(AttackCo());
-        //     comboResetCooldown = 1.5f;
-        //     animator.SetTrigger("combo"+combo);
-        //     combo++;
-        // }
-        
-        AttackFunction();
-        
-        if(change.x < 0 && facingRight ||change.x > 0 && !facingRight){
-            facingRight = !facingRight;
-            Vector3 localScale = transform.localScale;
-            localScale.x *=-1f;
-            transform.localScale = localScale;
-        }
-        
-    }
 
-    private void AttackFunction(){
-        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo1")){
-            animator.SetBool("combo1", false);
-        }
-
-        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo2")){
-            animator.SetBool("combo2", false);
-        }
-
-        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo3")){
-            animator.SetBool("combo3", false);
-            noOfClicks = 0;
-        }
-
+        // Check number of clicks on "attack" button and play combo animation
         if(Time.time - lastClickedTime > maxComboDelay){
             noOfClicks = 0;
         }
@@ -108,25 +78,37 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(AttackCo());
             }
         }
+        if(Input.GetKeyDown(KeyCode.Space )){
+            animator.ResetTrigger("combo1");
+            animator.ResetTrigger("combo2");
+            animator.ResetTrigger("combo3");
+        }
+
+        // check if the player is facing other direction, flip the sprite to opposite side
+        if(change.x < 0 && facingRight ||change.x > 0 && !facingRight){
+            facingRight = !facingRight;
+            Vector3 localScale = transform.localScale;
+            localScale.x *=-1f;
+            transform.localScale = localScale;
+        }
+        
     }
 
     void OnClick(){
         lastClickedTime = Time.time;
         noOfClicks++;
         if(noOfClicks == 1){
-            animator.SetBool("combo1", true);
+            animator.SetTrigger("combo1");
         }
         noOfClicks = Mathf.Clamp(noOfClicks,0,3);
 
-        // check if the animation of the combo is finished
-        if(noOfClicks >= 2 && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo1")){
-            animator.SetBool("combo1", false);
-            animator.SetBool("combo2", true);
+        if(noOfClicks >= 2){
+            animator.SetTrigger("combo2");
         }
 
-        if(noOfClicks >= 3 && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo2")){
-            animator.SetBool("combo2", false);
-            animator.SetBool("combo3", true);
+        if(noOfClicks >= 3){
+            animator.SetTrigger("combo3");
+            noOfClicks = 0;
         }
     }
 
@@ -140,10 +122,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Finish_Ani(){
-        currentState = PlayerState.walk;
-        combo=0;
-    
+    public void ResetTrigger(){
+        animator.ResetTrigger("combo1");
+        animator.ResetTrigger("combo2");
+        animator.ResetTrigger("combo3");
     }
 
     private IEnumerator AttackCo(){
