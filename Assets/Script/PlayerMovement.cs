@@ -32,12 +32,13 @@ public class PlayerMovement : MonoBehaviour
     private float regenCooldown = 5f;
     [SerializeField] private GameObject healingParticle;
     public int combo;
-    // [SerializeField] private Timer comboResetTimer;
-    // [SerializeField] private float comboCooldown;
-    private float nextAttackTime;
-    private bool isCoolingDown => Time.time < nextAttackTime;
-    private float comboResetCooldown;
-    private void StartCoolDown(float cooldownTime) => nextAttackTime = Time.time + cooldownTime;
+    public float comboResetCooldown = 2f;
+    private float nextAttackTime = 0f;
+    public static int noOfClicks = 0;
+    float lastClickedTime = 0;
+    float maxComboDelay = 1;
+
+    
 
    
     // Start is called before the first frame update
@@ -66,13 +67,14 @@ public class PlayerMovement : MonoBehaviour
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
 
-        if(Input.GetButtonDown("Attack") && currentState != PlayerState.attack){
-            StartCoroutine(AttackCo());
-            comboResetCooldown = 1.5f;
-            animator.SetTrigger("combo"+combo);
-            combo++;
-        }
-        ResetCombo();
+        // if(Input.GetButtonDown("Attack") && currentState != PlayerState.attack){
+        //     StartCoroutine(AttackCo());
+        //     comboResetCooldown = 1.5f;
+        //     animator.SetTrigger("combo"+combo);
+        //     combo++;
+        // }
+        
+        AttackFunction();
         
         if(change.x < 0 && facingRight ||change.x > 0 && !facingRight){
             facingRight = !facingRight;
@@ -83,12 +85,58 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
+    private void AttackFunction(){
+        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo1")){
+            animator.SetBool("combo1", false);
+        }
+
+        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo2")){
+            animator.SetBool("combo2", false);
+        }
+
+        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo3")){
+            animator.SetBool("combo3", false);
+            noOfClicks = 0;
+        }
+
+        if(Time.time - lastClickedTime > maxComboDelay){
+            noOfClicks = 0;
+        }
+        if(Time.time > nextAttackTime){
+            if(Input.GetButtonDown("Attack") && currentState != PlayerState.attack){
+                OnClick();
+                StartCoroutine(AttackCo());
+            }
+        }
+    }
+
+    void OnClick(){
+        lastClickedTime = Time.time;
+        noOfClicks++;
+        if(noOfClicks == 1){
+            animator.SetBool("combo1", true);
+        }
+        noOfClicks = Mathf.Clamp(noOfClicks,0,3);
+
+        // check if the animation of the combo is finished
+        if(noOfClicks >= 2 && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo1")){
+            animator.SetBool("combo1", false);
+            animator.SetBool("combo2", true);
+        }
+
+        if(noOfClicks >= 3 && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo2")){
+            animator.SetBool("combo2", false);
+            animator.SetBool("combo3", true);
+        }
+    }
+
     private void ResetCombo(){
         if(comboResetCooldown>0){
             comboResetCooldown -= Time.deltaTime;
         }
         if(comboResetCooldown<=0|| combo>2){
             combo = 0;
+            currentState = PlayerState.walk;
         }
     }
 
