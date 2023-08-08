@@ -35,10 +35,7 @@ public class PlayerMovement : MonoBehaviour
     public float comboResetCooldown = 2f;
     private float nextAttackTime = 0f;
     public static int noOfClicks = 0;
-    float lastClickedTime = 0;
-    float maxComboDelay = 1;
-
-    
+    float lastClickedTime = 0;    
 
    
     // Start is called before the first frame update
@@ -69,19 +66,15 @@ public class PlayerMovement : MonoBehaviour
 
 
         // Check number of clicks on "attack" button and play combo animation
-        if(Time.time - lastClickedTime > maxComboDelay){
+        if(Time.time - lastClickedTime > comboResetCooldown){
             noOfClicks = 0;
+            //Debug.Log("reset combo");
         }
         if(Time.time > nextAttackTime){
             if(Input.GetButtonDown("Attack") && currentState != PlayerState.attack){
                 OnClick();
                 StartCoroutine(AttackCo());
             }
-        }
-        if(Input.GetKeyDown(KeyCode.Space )){
-            animator.ResetTrigger("combo1");
-            animator.ResetTrigger("combo2");
-            animator.ResetTrigger("combo3");
         }
 
         // check if the player is facing other direction, flip the sprite to opposite side
@@ -110,6 +103,8 @@ public class PlayerMovement : MonoBehaviour
             animator.SetTrigger("combo3");
             noOfClicks = 0;
         }
+
+
     }
 
     private void ResetCombo(){
@@ -126,6 +121,7 @@ public class PlayerMovement : MonoBehaviour
         animator.ResetTrigger("combo1");
         animator.ResetTrigger("combo2");
         animator.ResetTrigger("combo3");
+        currentState = PlayerState.walk;
     }
 
     private IEnumerator AttackCo(){
