@@ -31,11 +31,11 @@ public class PlayerMovement : MonoBehaviour
     public bool isRegen = false;
     private float regenCooldown = 5f;
     [SerializeField] private GameObject healingParticle;
-    public int combo;
     public float comboResetCooldown = 2f;
     private float nextAttackTime = 0f;
     public static int noOfClicks = 0;
     float lastClickedTime = 0;    
+    public bool isCombo, attackButtonPressed;
 
    
     // Start is called before the first frame update
@@ -64,14 +64,17 @@ public class PlayerMovement : MonoBehaviour
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
 
+        if(animator.GetCurrentAnimatorStateInfo(0).IsName("combo1")){
+            Debug.Log("combo1 is playing");
+        }
 
         // Check number of clicks on "attack" button and play combo animation
         if(Time.time - lastClickedTime > comboResetCooldown){
             noOfClicks = 0;
-            //Debug.Log("reset combo");
+            ResetTrigger();
         }
         if(Time.time > nextAttackTime){
-            if(Input.GetButtonDown("Attack") && currentState != PlayerState.attack){
+            if(Input.GetButtonDown("Attack") ){
                 OnClick();
                 StartCoroutine(AttackCo());
             }
@@ -88,18 +91,19 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnClick(){
+        attackButtonPressed = true;
         lastClickedTime = Time.time;
         noOfClicks++;
-        if(noOfClicks == 1){
+        if(noOfClicks == 1 ){
             animator.SetTrigger("combo1");
         }
         noOfClicks = Mathf.Clamp(noOfClicks,0,3);
 
-        if(noOfClicks >= 2){
+        if(noOfClicks >= 2 && !animator.GetCurrentAnimatorStateInfo(0).IsName("combo1")){
             animator.SetTrigger("combo2");
         }
 
-        if(noOfClicks >= 3){
+        if(noOfClicks >= 3 && !animator.GetCurrentAnimatorStateInfo(0).IsName("combo2")){
             animator.SetTrigger("combo3");
             noOfClicks = 0;
         }
@@ -107,13 +111,11 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    private void ResetCombo(){
-        if(comboResetCooldown>0){
-            comboResetCooldown -= Time.deltaTime;
-        }
-        if(comboResetCooldown<=0|| combo>2){
-            combo = 0;
-            currentState = PlayerState.walk;
+    public void SpammingAttackCheck(){
+        if(attackButtonPressed){
+            isCombo = true;
+        }else{
+            isCombo = false;
         }
     }
 
@@ -126,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator AttackCo(){
         currentState = PlayerState.attack; //meaning not in walking state/ can't move
-        yield return new WaitForSeconds(.23f);
+        yield return new WaitForSeconds(0.5f);
         currentState = PlayerState.walk; 
         
     }
