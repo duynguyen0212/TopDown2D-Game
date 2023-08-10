@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     private float nextAttackTime = 0f;
     public static int noOfClicks = 0;
     float lastClickedTime = 0;    
-    public bool isCombo, attackButtonPressed;
+    public bool isCombo, isAniFinish;
 
    
     // Start is called before the first frame update
@@ -72,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
         if(Time.time - lastClickedTime > comboResetCooldown){
             noOfClicks = 0;
             ResetTrigger();
+            isAniFinish = false;
         }
         if(Time.time > nextAttackTime){
             if(Input.GetButtonDown("Attack") ){
@@ -91,7 +92,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnClick(){
-        attackButtonPressed = true;
         lastClickedTime = Time.time;
         noOfClicks++;
         if(noOfClicks == 1 ){
@@ -99,25 +99,23 @@ public class PlayerMovement : MonoBehaviour
         }
         noOfClicks = Mathf.Clamp(noOfClicks,0,3);
 
-        if(noOfClicks >= 2 && !animator.GetCurrentAnimatorStateInfo(0).IsName("combo1")){
+        if(noOfClicks >= 2 ){
             animator.SetTrigger("combo2");
+            isAniFinish = false;
         }
 
-        if(noOfClicks >= 3 && !animator.GetCurrentAnimatorStateInfo(0).IsName("combo2")){
+        if(noOfClicks >= 3){
             animator.SetTrigger("combo3");
             noOfClicks = 0;
+            isAniFinish = false;
         }
 
 
     }
 
-    public void SpammingAttackCheck(){
-        if(attackButtonPressed){
-            isCombo = true;
-        }else{
-            isCombo = false;
-        }
-    }
+   public void FinishAni(){
+        isAniFinish = true;
+   }
 
     public void ResetTrigger(){
         animator.ResetTrigger("combo1");
