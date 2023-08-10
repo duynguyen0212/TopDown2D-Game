@@ -28,20 +28,20 @@ public class PlayerMovement : MonoBehaviour
     public float criticalHitChance;
     private int criticalHitBonus;
     public Player_Info info;
-    public bool isRegen = false;
+    private bool isRegen = false;
     private float regenCooldown = 5f;
     [SerializeField] private GameObject healingParticle;
-    public float comboResetCooldown = 2f;
+    public float comboResetCooldown;
     private float nextAttackTime = 0f;
-    public static int noOfClicks = 0;
+    public int noOfClicks = 0;
     float lastClickedTime = 0;    
-    public bool isCombo, isAniFinish;
+    private const int comboMaxStep = 2;
+    private int comboHitStep;
 
    
     // Start is called before the first frame update
     void Start()
     {
-        
         currentHealth = maxHealth;
         currentMana = maxMana;
         currentEXP = 0;
@@ -54,7 +54,6 @@ public class PlayerMovement : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody2D>();
         animator.SetFloat("moveX",0);
         animator.SetFloat("moveY", -1);
-        //comboResetTimer = new Timer();
     }
 
     // Update is called once per frame
@@ -64,21 +63,26 @@ public class PlayerMovement : MonoBehaviour
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
 
-        if(animator.GetCurrentAnimatorStateInfo(0).IsName("combo1")){
-            Debug.Log("combo1 is playing");
-        }
-
         // Check number of clicks on "attack" button and play combo animation
         if(Time.time - lastClickedTime > comboResetCooldown){
             noOfClicks = 0;
-            ResetTrigger();
-            isAniFinish = false;
         }
         if(Time.time > nextAttackTime){
             if(Input.GetButtonDown("Attack") ){
                 OnClick();
-                StartCoroutine(AttackCo());
             }
+        }
+
+        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.3f && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack0")){
+            animator.SetBool("combo0", false);
+        }
+
+        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.3f && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1")){
+            animator.SetBool("combo1", false);
+        }
+        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.3f && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2")){
+            animator.SetBool("combo2", false);
+            noOfClicks = 0;
         }
 
         // check if the player is facing other direction, flip the sprite to opposite side
@@ -94,40 +98,28 @@ public class PlayerMovement : MonoBehaviour
     void OnClick(){
         lastClickedTime = Time.time;
         noOfClicks++;
-        if(noOfClicks == 1 ){
-            animator.SetTrigger("combo1");
-        }
         noOfClicks = Mathf.Clamp(noOfClicks,0,3);
-
+        if(noOfClicks == 1 ){
+            animator.SetBool("combo0", true);
+        }
         if(noOfClicks >= 2 ){
-            animator.SetTrigger("combo2");
-            isAniFinish = false;
+            animator.SetBool("combo0", false);
+            animator.SetBool("combo1", true);
         }
 
-        if(noOfClicks >= 3){
-            animator.SetTrigger("combo3");
+        if(noOfClicks >= 3  ){
+            animator.SetBool("combo1", false);
+            animator.SetBool("combo2", true);
             noOfClicks = 0;
-            isAniFinish = false;
         }
 
 
-    }
-
-   public void FinishAni(){
-        isAniFinish = true;
-   }
-
-    public void ResetTrigger(){
-        animator.ResetTrigger("combo1");
-        animator.ResetTrigger("combo2");
-        animator.ResetTrigger("combo3");
-        currentState = PlayerState.walk;
     }
 
     private IEnumerator AttackCo(){
         currentState = PlayerState.attack; //meaning not in walking state/ can't move
-        yield return new WaitForSeconds(0.5f);
-        currentState = PlayerState.walk; 
+        yield return new WaitForSeconds(0.23f);
+        currentState = PlayerState.walk;     
         
     }
 
