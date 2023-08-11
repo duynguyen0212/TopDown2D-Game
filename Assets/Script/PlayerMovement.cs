@@ -12,17 +12,17 @@ public enum PlayerState{
 public class PlayerMovement : MonoBehaviour
 {
     private float speed = 7;
-    public int maxHealth = 100;
-    public int maxMana = 100;
-    public int maxEXP = 1000;
+    private int maxHealth = 100;
+    private int maxMana = 100;
+    private int maxEXP = 1000;
     public int currentHealth,currentMana,currentEXP;
     private int baseAttackDmg = 10;
     private Rigidbody2D myRigidbody;
     private Vector3 change;
     private Vector2 movement;
     private Animator animator;
-    public bool facingRight = true;
-    public Vector3 refVel = Vector3.zero;
+    private bool facingRight = true;
+    private Vector3 refVel = Vector3.zero;
     public PlayerState currentState;
     Vector2 knockbackVec;
     public float criticalHitChance;
@@ -33,11 +33,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject healingParticle;
     public float comboResetCooldown;
     private float nextAttackTime = 0f;
-    public int noOfClicks = 0;
+    private int noOfClicks = 0;
     float lastClickedTime = 0;    
-    private const int comboMaxStep = 2;
-    private int comboHitStep;
-
    
     // Start is called before the first frame update
     void Start()
@@ -100,48 +97,31 @@ public class PlayerMovement : MonoBehaviour
         noOfClicks++;
         noOfClicks = Mathf.Clamp(noOfClicks,0,3);
         if(noOfClicks == 1 ){
-            // animator.SetBool("combo0", true);
-            StartCoroutine(AttackCo(0));
+            animator.SetBool("combo0", true);
+            StartCoroutine(AttackCo());
+            
         }
         if(noOfClicks >= 2 ){
-            // animator.SetBool("combo0", false);
-            // animator.SetBool("combo1", true);
-            StartCoroutine(AttackCo(1));
+            animator.SetBool("combo0", false);  
+            animator.SetBool("combo1", true);
+            StartCoroutine(AttackCo());
+
+            
         }
 
         if(noOfClicks >= 3  ){
-            // animator.SetBool("combo1", false);
-            // animator.SetBool("combo2", true);
-            StartCoroutine(AttackCo(2));
+            animator.SetBool("combo1", false);
+            animator.SetBool("combo2", true);
+            StartCoroutine(AttackCo());
             noOfClicks = 0;
         }
 
 
     }
 
-    private IEnumerator AttackCo(int num){
+    private IEnumerator AttackCo(){
         currentState = PlayerState.attack; //meaning not in walking state/ can't move
-        yield return new WaitForEndOfFrame();
-        yield return new WaitForSeconds(
-            animator.GetAnimatorTransitionInfo(0).duration);
-        yield return new WaitForEndOfFrame();
-
-        if(num ==0){
-            animator.SetBool("combo0", true);
-            yield return new WaitForSeconds(0.23f);
-        }
-
-        if(num == 1){
-            animator.SetBool("combo0", false);
-            yield return new WaitUntil(()=> animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f);
-            animator.SetBool("combo1", true);
-        }
-
-        if(num == 2){
-            animator.SetBool("combo1", false);
-            yield return new WaitUntil(()=> animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f);
-            animator.SetBool("combo2", true);
-        }
+        yield return new WaitForSeconds(0.23f);
         currentState = PlayerState.walk;     
         
     }
