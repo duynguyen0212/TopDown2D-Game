@@ -73,14 +73,14 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.3f && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack0")){
+        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack0")){
             animator.SetBool("combo0", false);
         }
 
-        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.3f && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1")){
+        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1")){
             animator.SetBool("combo1", false);
         }
-        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.3f && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2")){
+        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2")){
             animator.SetBool("combo2", false);
             noOfClicks = 0;
         }
@@ -100,25 +100,48 @@ public class PlayerMovement : MonoBehaviour
         noOfClicks++;
         noOfClicks = Mathf.Clamp(noOfClicks,0,3);
         if(noOfClicks == 1 ){
-            animator.SetBool("combo0", true);
+            // animator.SetBool("combo0", true);
+            StartCoroutine(AttackCo(0));
         }
         if(noOfClicks >= 2 ){
-            animator.SetBool("combo0", false);
-            animator.SetBool("combo1", true);
+            // animator.SetBool("combo0", false);
+            // animator.SetBool("combo1", true);
+            StartCoroutine(AttackCo(1));
         }
 
         if(noOfClicks >= 3  ){
-            animator.SetBool("combo1", false);
-            animator.SetBool("combo2", true);
+            // animator.SetBool("combo1", false);
+            // animator.SetBool("combo2", true);
+            StartCoroutine(AttackCo(2));
             noOfClicks = 0;
         }
 
 
     }
 
-    private IEnumerator AttackCo(){
+    private IEnumerator AttackCo(int num){
         currentState = PlayerState.attack; //meaning not in walking state/ can't move
-        yield return new WaitForSeconds(0.23f);
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(
+            animator.GetAnimatorTransitionInfo(0).duration);
+        yield return new WaitForEndOfFrame();
+
+        if(num ==0){
+            animator.SetBool("combo0", true);
+            yield return new WaitForSeconds(0.23f);
+        }
+
+        if(num == 1){
+            animator.SetBool("combo0", false);
+            yield return new WaitUntil(()=> animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f);
+            animator.SetBool("combo1", true);
+        }
+
+        if(num == 2){
+            animator.SetBool("combo1", false);
+            yield return new WaitUntil(()=> animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f);
+            animator.SetBool("combo2", true);
+        }
         currentState = PlayerState.walk;     
         
     }
