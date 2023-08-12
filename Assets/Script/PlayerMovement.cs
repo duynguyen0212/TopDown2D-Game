@@ -70,14 +70,14 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack0")){
+        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.3f && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack0")){
             animator.SetBool("combo0", false);
         }
 
-        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1")){
+        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.3f && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1")){
             animator.SetBool("combo1", false);
         }
-        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2")){
+        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.3f && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack2")){
             animator.SetBool("combo2", false);
             noOfClicks = 0;
         }
@@ -101,22 +101,22 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(AttackCo());
             
         }
-        if(noOfClicks >= 2 ){
-            animator.SetBool("combo0", false);  
-            animator.SetBool("combo1", true);
+        else if(noOfClicks == 2 ){
+            animator.SetBool("combo0", true);  
             StartCoroutine(AttackCo());
+            animator.SetBool("combo1", true);
 
             
         }
 
-        if(noOfClicks >= 3  ){
-            animator.SetBool("combo1", false);
-            animator.SetBool("combo2", true);
+        else if(noOfClicks == 3  ){
+            animator.SetBool("combo0", true); 
             StartCoroutine(AttackCo());
+            animator.SetBool("combo1", true);
+
+            animator.SetBool("combo2", true);
             noOfClicks = 0;
         }
-
-
     }
 
     private IEnumerator AttackCo(){
@@ -159,7 +159,6 @@ public class PlayerMovement : MonoBehaviour
 
         if(change !=Vector3.zero  && currentState != PlayerState.attack){
             currentState = PlayerState.walk;
-            //UpdateAnimationAndMove();
             animator.SetBool("moving",true);
             animator.SetFloat("moveX", change.x);
             animator.SetFloat("moveY", change.y);
