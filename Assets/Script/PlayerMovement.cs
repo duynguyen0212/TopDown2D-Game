@@ -101,20 +101,19 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(AttackCo());
             
         }
-        else if(noOfClicks == 2 ){
-            animator.SetBool("combo0", true);  
-            StartCoroutine(AttackCo());
-            animator.SetBool("combo1", true);
-
+        if(noOfClicks == 2 ){
+            animator.SetBool("combo0", false);  
             
+            animator.SetBool("combo1", true);
+            StartCoroutine(AttackCo());
         }
 
-        else if(noOfClicks == 3  ){
-            animator.SetBool("combo0", true); 
-            StartCoroutine(AttackCo());
-            animator.SetBool("combo1", true);
+        if(noOfClicks == 3  ){
+           
+            animator.SetBool("combo1", false);
 
             animator.SetBool("combo2", true);
+            StartCoroutine(AttackCo());
             noOfClicks = 0;
         }
     }
