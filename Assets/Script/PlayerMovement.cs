@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     public float comboResetCooldown;
     private float nextAttackTime = 0f;
     private int noOfClicks = 0;
-    float lastClickedTime = 0;    
+    float lastClickedTime = 0f;    
    
     // Start is called before the first frame update
     void Start()
@@ -91,24 +91,23 @@ public class PlayerMovement : MonoBehaviour
         }
         
     }
-
+   
     void OnClick(){
         lastClickedTime = Time.time;
         noOfClicks++;
         noOfClicks = Mathf.Clamp(noOfClicks,0,3);
-        if(noOfClicks == 1 ){
+        if(noOfClicks == 1 && currentState!=PlayerState.attack){
             animator.SetBool("combo0", true);
             StartCoroutine(AttackCo());
             
         }
-        if(noOfClicks == 2 ){
+        if(noOfClicks == 2 && currentState!=PlayerState.attack){
             animator.SetBool("combo0", false);  
-            
             animator.SetBool("combo1", true);
             StartCoroutine(AttackCo());
         }
 
-        if(noOfClicks == 3  ){
+        if(noOfClicks == 3 && currentState!=PlayerState.attack){
            
             animator.SetBool("combo1", false);
 
@@ -120,9 +119,9 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator AttackCo(){
         currentState = PlayerState.attack; //meaning not in walking state/ can't move
-        yield return new WaitForSeconds(0.23f);
+        yield return new WaitForSeconds(0.3f);
+        //Debug.Log("finish attack");
         currentState = PlayerState.walk;     
-        
     }
 
     private void FixedUpdate() {
