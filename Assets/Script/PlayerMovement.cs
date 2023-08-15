@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject healingParticle;
     public float comboResetCooldown;
     private float nextAttackTime = 0f;
-    private int noOfClicks = 0;
+    public int noOfClicks = 0;
     float lastClickedTime = 0f;    
    
     // Start is called before the first frame update
@@ -65,8 +65,11 @@ public class PlayerMovement : MonoBehaviour
             noOfClicks = 0;
         }
         if(Time.time > nextAttackTime){
-            if(Input.GetButtonDown("Attack") ){
-                OnClick();
+            if(Input.GetButtonDown("Attack") && currentState != PlayerState.attack){
+                lastClickedTime = Time.time;
+                noOfClicks++;
+                noOfClicks = Mathf.Clamp(noOfClicks,0,3);
+                OnClick(noOfClicks);
             }
         }
 
@@ -92,22 +95,22 @@ public class PlayerMovement : MonoBehaviour
         
     }
    
-    void OnClick(){
-        lastClickedTime = Time.time;
-        noOfClicks++;
-        noOfClicks = Mathf.Clamp(noOfClicks,0,3);
-        if(noOfClicks == 1 && currentState!=PlayerState.attack){
+    void OnClick(int comboNum){
+        // lastClickedTime = Time.time;
+        // noOfClicks++;
+        // noOfClicks = Mathf.Clamp(noOfClicks,0,3);
+        if(comboNum == 1 && currentState!=PlayerState.attack){
             animator.SetBool("combo0", true);
             StartCoroutine(AttackCo());
             
         }
-        if(noOfClicks == 2 && currentState!=PlayerState.attack){
+        if(comboNum == 2 && currentState!=PlayerState.attack){
             animator.SetBool("combo0", false);  
             animator.SetBool("combo1", true);
             StartCoroutine(AttackCo());
         }
 
-        if(noOfClicks == 3 && currentState!=PlayerState.attack){
+        if(comboNum == 3 && currentState!=PlayerState.attack){
            
             animator.SetBool("combo1", false);
 
