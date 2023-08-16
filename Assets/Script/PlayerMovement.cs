@@ -64,14 +64,14 @@ public class PlayerMovement : MonoBehaviour
         if(Time.time - lastClickedTime > comboResetCooldown){
             noOfClicks = 0;
         }
-        if(Time.time > nextAttackTime){
+        
             if(Input.GetButtonDown("Attack") && currentState != PlayerState.attack){
                 lastClickedTime = Time.time;
                 noOfClicks++;
                 noOfClicks = Mathf.Clamp(noOfClicks,0,3);
                 OnClick(noOfClicks);
             }
-        }
+        
 
         if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.3f && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack0")){
             animator.SetBool("combo0", false);
@@ -95,10 +95,7 @@ public class PlayerMovement : MonoBehaviour
         
     }
    
-    void OnClick(int comboNum){
-        // lastClickedTime = Time.time;
-        // noOfClicks++;
-        // noOfClicks = Mathf.Clamp(noOfClicks,0,3);
+    private void OnClick(int comboNum){
         if(comboNum == 1 && currentState!=PlayerState.attack){
             animator.SetBool("combo0", true);
             StartCoroutine(AttackCo());
@@ -111,21 +108,37 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if(comboNum == 3 && currentState!=PlayerState.attack){
-           
             animator.SetBool("combo1", false);
-
             animator.SetBool("combo2", true);
             StartCoroutine(AttackCo());
             noOfClicks = 0;
         }
     }
 
+    void FinishCombo(){
+        animator.SetBool("combo0", false);
+        animator.SetBool("combo1", false);
+        animator.SetBool("combo2", false);
+        noOfClicks = 0;
+        StartCoroutine(AttackComboCooldownCo());
+        currentState = PlayerState.walk;
+    }
+
     private IEnumerator AttackCo(){
         currentState = PlayerState.attack; //meaning not in walking state/ can't move
         yield return new WaitForSeconds(0.3f);
         //Debug.Log("finish attack");
-        currentState = PlayerState.walk;     
+        currentState = PlayerState.walk;
+        if(noOfClicks>2){
+            noOfClicks = 0;     
+        }
     }
+
+    private IEnumerator AttackComboCooldownCo(){
+        yield return new WaitForSeconds(0.3f);
+    }
+
+
 
     private void FixedUpdate() {
         if(currentState == PlayerState.walk){
