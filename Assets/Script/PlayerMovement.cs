@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
         info.SetMaxMana(maxMana);
         info.SetMaxEXP(maxEXP);
         info.SetEXP(currentEXP);
-        currentState = PlayerState.walk;
+        currentState = PlayerState.idle;
         animator = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
         animator.SetFloat("moveX",0);
@@ -120,7 +120,6 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("combo2", false);
         noOfClicks = 0;
         StartCoroutine(AttackComboCooldownCo());
-        currentState = PlayerState.walk;
     }
 
     private IEnumerator AttackCo(){
