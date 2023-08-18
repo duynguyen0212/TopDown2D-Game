@@ -64,6 +64,8 @@ public class PlayerMovement : MonoBehaviour
             FinishCombo();
         }
         
+        // Attack function check how many attack button was click
+        // perform combo depend on the number of clicks
         if(Input.GetButtonDown("Attack") && currentState != PlayerState.attack){
             lastClickedTime = Time.time;
             noOfClicks++;
@@ -71,11 +73,10 @@ public class PlayerMovement : MonoBehaviour
             OnClick(noOfClicks);
         }
         
-
+        // Check if animation combo attack finish
         if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.3f && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack0")){
             animator.SetBool("combo0", false);
         }
-
         if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.3f && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1")){
             animator.SetBool("combo1", false);
         }
@@ -94,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
         
     }
    
+    // Onclick method to turn on combo animation
     private void OnClick(int comboNum){
         if(comboNum == 1 && currentState!=PlayerState.attack){
             animator.SetBool("combo0", true);
@@ -135,8 +137,6 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator AttackComboCooldownCo(){
         yield return new WaitForSeconds(0.3f);
     }
-
-
 
     private void FixedUpdate() {
         if(currentState == PlayerState.walk){
