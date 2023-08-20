@@ -24,9 +24,6 @@ public class Enemy : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         
     }
-
-
-    
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
