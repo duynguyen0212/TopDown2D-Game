@@ -40,7 +40,6 @@ public class Bear : Enemy
         
     }
     
-
     private void Update()
     {
 
@@ -64,11 +63,7 @@ public class Bear : Enemy
             Vector3 localScale = transform.localScale;
             localScale.x *=-1f;
             transform.localScale = localScale;
-        }
-
-       
-
-        
+        } 
     }
 
     private void FixedUpdate() {
@@ -80,7 +75,6 @@ public class Bear : Enemy
             StartCoroutine(AttackCo());
             StartCoolDown(cooldown);
             
-        
         } else if(!isInAttackRange && attackAnimation == false){
             animator.SetBool("isAttacking",false);
             rb.constraints = RigidbodyConstraints2D.None;
@@ -90,17 +84,14 @@ public class Bear : Enemy
         if (!isInFollowRange){
             animator.SetBool("isWalking",false);
         }
-         
     }
 
     private void Wander()
     {
-        
             moveX = Mathf.Sign(Random.Range(-1f, 1f));
             moveY = Mathf.Sign(Random.Range(-1f, 1f));
 
         transform.Translate(new Vector2(moveX, moveY) * moveSpeed * Time.deltaTime);
-        
     }
 
     private void MoveCharacter(Vector2 dir)
@@ -128,9 +119,7 @@ public class Bear : Enemy
                     base.criticalHitBonus = 0;
                 }
                 base.DealDmg(player);
-                
             }
-        
     }
 
     
@@ -145,7 +134,5 @@ public class Bear : Enemy
         yield return new WaitForSeconds(.5f);
         animator.SetBool("isAttacking",false);
         attackAnimation = false;
-        
     }
-
 }
