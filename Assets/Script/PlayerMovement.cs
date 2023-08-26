@@ -59,9 +59,10 @@ public class PlayerMovement : MonoBehaviour
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
 
-        // Check number of clicks on "attack" button and play combo animation
+        
         if(Time.time - lastClickedTime > comboResetCooldown){
-            FinishCombo();
+            //FinishCombo();
+            noOfClicks = 0;
         }
         
         // Attack function check how many attack button was click
@@ -72,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
             noOfClicks = Mathf.Clamp(noOfClicks,0,3);
             OnClick(noOfClicks);
         }
+        
         
         // Check if animation combo attack finish
         if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.3f && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack0")){
@@ -121,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("combo1", false);
         animator.SetBool("combo2", false);
         noOfClicks = 0;
-        StartCoroutine(AttackComboCooldownCo());
+        //StartCoroutine(AttackComboCooldownCo());
     }
 
     private IEnumerator AttackCo(){
@@ -181,8 +183,6 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("moving",false);  
             currentState = PlayerState.idle;
         }
-        
-        
     }
 
 
