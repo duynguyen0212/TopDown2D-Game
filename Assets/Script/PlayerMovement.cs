@@ -119,9 +119,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void FinishCombo(){
-        animator.SetBool("combo0", false);
-        animator.SetBool("combo1", false);
-        animator.SetBool("combo2", false);
+        
         noOfClicks = 0;
         //StartCoroutine(AttackComboCooldownCo());
     }
