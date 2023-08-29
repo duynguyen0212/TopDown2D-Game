@@ -46,7 +46,6 @@ public class Bear : Enemy
         isInFollowRange = Physics2D.OverlapCircle(transform.position, maxRange, whatIsPlayer);
         isInAttackRange = Physics2D.OverlapCircle(transform.position, attackRange, whatIsPlayer);
         
-
         direction = player.position-transform.position;
         float angle = Mathf.Atan2(direction.x,direction.y)*Mathf.Rad2Deg;
         direction.Normalize();
@@ -55,7 +54,6 @@ public class Bear : Enemy
             animator.SetFloat("moveX", direction.x);
             animator.SetFloat("moveY", direction.y);
         }
-
     
         // method to flip animation from left to right and vice versa
         if(movement.x < 0 && facingRight ||movement.x > 0 && !facingRight){
@@ -99,7 +97,6 @@ public class Bear : Enemy
         animator.SetBool("isWalking", isInFollowRange);
         rb.MovePosition((Vector2)transform.position + (dir*moveSpeed*Time.deltaTime));
     }
-
     
     private void ApplyKnockback(PlayerMovement player){
         Vector2 knockbackDirection = (player.transform.position - transform.position).normalized;
@@ -121,8 +118,6 @@ public class Bear : Enemy
                 base.DealDmg(player);
             }
     }
-
-    
 
     private IEnumerator AttackCo(){
         attackAnimation = true;

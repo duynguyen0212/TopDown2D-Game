@@ -119,30 +119,22 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void FinishCombo(){
-        
         noOfClicks = 0;
-        //StartCoroutine(AttackComboCooldownCo());
     }
 
     private IEnumerator AttackCo(){
         currentState = PlayerState.attack; //meaning not in walking state/ can't move
         yield return new WaitForSeconds(0.3f);
-        //Debug.Log("finish attack");
         currentState = PlayerState.walk;
         if(noOfClicks>2){
             noOfClicks = 0;     
         }
     }
 
-    private IEnumerator AttackComboCooldownCo(){
-        yield return new WaitForSeconds(0.3f);
-    }
-
     private void FixedUpdate() {
         if(currentState == PlayerState.walk){
             change.Normalize();
             myRigidbody.MovePosition(transform.position + change * speed * Time.deltaTime);
-
         }
         if(currentState == PlayerState.knockedback){
             myRigidbody.AddForce(knockbackVec, ForceMode2D.Impulse);
@@ -182,7 +174,6 @@ public class PlayerMovement : MonoBehaviour
             currentState = PlayerState.idle;
         }
     }
-
 
     public void ApplyKnockback(Vector2 direction, float force)
     {
@@ -229,7 +220,6 @@ public class PlayerMovement : MonoBehaviour
             
             int damage = baseAttackDmg + criticalHitBonus;
             enemy.TakeDamage(damage);
-            
         }
 
          if(other.CompareTag("Breakable")){
