@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isRegen = false;
     private float regenCooldown = 5f;
     [SerializeField] private GameObject healingParticle;
+    [SerializeField] private GameObject impactParticle;
     public float comboResetCooldown;
     public int noOfClicks = 0;
     float lastClickedTime = 0f;    
@@ -58,12 +59,15 @@ public class PlayerMovement : MonoBehaviour
         change = Vector3.zero;
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
-
+        
+        impactParticle.transform.position = new(animator.GetFloat("moveX"),animator.GetFloat("moveY"),0);
         
         if(Time.time - lastClickedTime > comboResetCooldown){
             //FinishCombo();
             noOfClicks = 0;
         }
+
+        
         
         // Attack function check how many attack button was click
         // perform combo depend on the number of clicks
@@ -72,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
             noOfClicks++;
             noOfClicks = Mathf.Clamp(noOfClicks,0,3);
             OnClick(noOfClicks);
+            
         }
         
         
@@ -193,7 +198,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private IEnumerator HealingCo(){
-        
         isRegen=true;
         healingParticle.SetActive(true);
         while(currentHealth<maxHealth && isRegen){
@@ -203,7 +207,6 @@ public class PlayerMovement : MonoBehaviour
         }
         healingParticle.SetActive(false);
         isRegen=false;
-
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
@@ -220,10 +223,17 @@ public class PlayerMovement : MonoBehaviour
             
             int damage = baseAttackDmg + criticalHitBonus;
             enemy.TakeDamage(damage);
+            StartCoroutine(ImpactEffect());
         }
 
          if(other.CompareTag("Breakable")){
             other.GetComponent<Pots>().Smash();
         }
+    }
+    private IEnumerator ImpactEffect(){
+        
+        impactParticle.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        impactParticle.SetActive(false);
     }
 }
