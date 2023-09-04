@@ -60,15 +60,13 @@ public class PlayerMovement : MonoBehaviour
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
         
-        impactParticle.transform.position = new(animator.GetFloat("moveX"),animator.GetFloat("moveY"),0);
+        // impactParticle.transform.position = new(animator.GetFloat("moveX"),animator.GetFloat("moveY"),0);
         
         if(Time.time - lastClickedTime > comboResetCooldown){
             //FinishCombo();
             noOfClicks = 0;
         }
 
-        
-        
         // Attack function check how many attack button was click
         // perform combo depend on the number of clicks
         if(Input.GetButtonDown("Attack") && currentState != PlayerState.attack){
@@ -78,7 +76,6 @@ public class PlayerMovement : MonoBehaviour
             OnClick(noOfClicks);
             
         }
-        
         
         // Check if animation combo attack finish
         if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.3f && animator.GetCurrentAnimatorStateInfo(0).IsName("Attack0")){
@@ -231,7 +228,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     private IEnumerator ImpactEffect(){
-        
         impactParticle.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         impactParticle.SetActive(false);
