@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
         
-        // impactParticle.transform.position = new(animator.GetFloat("moveX"),animator.GetFloat("moveY"),0);
+        //impactParticle.transform.position = new(animator.GetFloat("moveX"),animator.GetFloat("moveY"),0);
         
         if(Time.time - lastClickedTime > comboResetCooldown){
             //FinishCombo();
