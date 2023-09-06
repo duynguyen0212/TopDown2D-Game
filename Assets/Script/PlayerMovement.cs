@@ -63,7 +63,6 @@ public class PlayerMovement : MonoBehaviour
         //impactParticle.transform.position = new(animator.GetFloat("moveX"),animator.GetFloat("moveY"),0);
         
         if(Time.time - lastClickedTime > comboResetCooldown){
-            //FinishCombo();
             noOfClicks = 0;
         }
 
@@ -220,7 +219,8 @@ public class PlayerMovement : MonoBehaviour
             
             int damage = baseAttackDmg + criticalHitBonus;
             enemy.TakeDamage(damage);
-            StartCoroutine(ImpactEffect());
+            // StartCoroutine(ImpactEffect());
+            Instantiate(impactParticle, other.transform.position, Quaternion.identity);
         }
 
          if(other.CompareTag("Breakable")){
