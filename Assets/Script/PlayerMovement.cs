@@ -191,6 +191,7 @@ public class PlayerMovement : MonoBehaviour
     public void TakeDamage(int damage){
         currentHealth -= damage;
         info.SetHP(currentHealth);
+        //TODO: Hurt animation
     }
 
     private IEnumerator HealingCo(){
@@ -220,7 +221,7 @@ public class PlayerMovement : MonoBehaviour
             int damage = baseAttackDmg + criticalHitBonus;
             enemy.TakeDamage(damage);
             // StartCoroutine(ImpactEffect());
-            Instantiate(impactParticle, other.transform.position, Quaternion.identity);
+            
         }
 
          if(other.CompareTag("Breakable")){

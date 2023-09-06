@@ -151,7 +151,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   targetColor: {r: 1, g: 0.9481132, b: 0.9481132, a: 0}
   originalPos: {fileID: 2386434763916781091}
-  enemySpawner: {fileID: 7312415840814046096, guid: 25a675c1276b3fb4a9041f68f08cf40b, type: 3}
+  impactParticle: {fileID: 2152043648265358326, guid: 67cea460ed00ea847a44ce6d286e07c6, type: 3}
   attackRange: 1.5
   whatIsPlayer:
     serializedVersion: 2

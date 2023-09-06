@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     public Transform originalPos;
     public delegate void EnemyKilled();   
     public static event EnemyKilled OnEnemyKilled; 
+    public GameObject impactParticle;
  
     
     // Start is called before the first frame update
@@ -31,8 +32,10 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
             if(OnEnemyKilled!=null)
                 OnEnemyKilled();
-            
         }
+        GameObject particle = (GameObject)Instantiate (impactParticle, transform.position, transform.rotation);
+        Destroy(particle,0.5f);
+        
     }
 
     public void DealDmg(PlayerMovement player)
