@@ -192,6 +192,13 @@ public class PlayerMovement : MonoBehaviour
         currentHealth -= damage;
         info.SetHP(currentHealth);
         //TODO: Hurt animation
+        StartCoroutine(HurtAnimationCo());
+    }
+
+    private IEnumerator HurtAnimationCo(){
+        animator.SetBool("isAttacked", true);
+        yield return new WaitForSeconds(0.35f);
+        animator.SetBool("isAttacked", false);
     }
 
     private IEnumerator HealingCo(){
